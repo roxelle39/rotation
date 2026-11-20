@@ -1,0 +1,267 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #101522;
+  color: #e8edf5;
+  font-family: Arial, sans-serif;
+}
+
+/* Organisation générale */
+#workspace {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Zone 3D */
+#scene-container {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#scene-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Panneau de commande */
+#controls-panel {
+  position: relative;
+  flex: 0 0 370px;
+  width: 370px;
+  height: 100%;
+  padding: 18px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #171f30;
+  border-left: 1px solid #34445f;
+  z-index: 2;
+}
+
+/* En-tête */
+.app-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #34425b;
+}
+
+.app-header h1 {
+  color: #74b8ff;
+  font-size: 21px;
+  margin-bottom: 7px;
+}
+
+.app-header p {
+  color: #9baec8;
+  font-size: 13px;
+}
+
+/* Sections */
+.panel {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #202b40;
+  border: 1px solid #34445f;
+  border-radius: 10px;
+}
+
+.panel h2 {
+  color: #83bdff;
+  font-size: 16px;
+  margin-bottom: 13px;
+}
+
+.panel h3 {
+  color: #d9e6fa;
+  font-size: 14px;
+  margin: 15px 0 8px;
+}
+
+.panel p {
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.description {
+  color: #9baec8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Champs numériques */
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 9px 0;
+  font-size: 13px;
+  color: #c5d3e7;
+}
+
+.field input {
+  width: 105px;
+  min-width: 0;
+  padding: 7px;
+  color: white;
+  background: #101a2a;
+  border: 1px solid #455a79;
+  border-radius: 5px;
+  outline: none;
+}
+
+.field input:focus {
+  border-color: #55a8ff;
+}
+
+/* Matrice 3 × 3 */
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.matrix-grid .field {
+  display: block;
+  text-align: center;
+  margin: 0;
+  font-size: 11px;
+}
+
+.matrix-grid .field span {
+  display: block;
+  margin-bottom: 5px;
+  color: #9db4d4;
+}
+
+.matrix-grid .field input {
+  width: 100%;
+  text-align: center;
+}
+
+/* Coordonnées vectorielles */
+.vector-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.vector-fields .field {
+  display: block;
+  margin: 5px 0;
+  font-size: 11px;
+}
+
+.vector-fields .field span {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.vector-fields .field input {
+  width: 100%;
+}
+
+/* Résultats */
+.result {
+  margin-top: 12px;
+  padding: 12px;
+  background: #121c2c;
+  border-radius: 7px;
+}
+
+.result p {
+  color: #9fb3d0;
+  margin-top: 9px;
+}
+
+.result strong {
+  display: block;
+  color: white;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+/* Légende */
+.legend {
+  margin-top: 12px;
+}
+
+.legend p {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #c0cee1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.yellow {
+  background: #ffcc33;
+}
+
+.green {
+  background: #65e6b2;
+}
+
+.purple {
+  background: #b78aff;
+}
+
+.legend-text {
+  color: #aabbd3;
+  line-height: 1.7;
+}
+
+/* Barre de défilement */
+#controls-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+#controls-panel::-webkit-scrollbar-thumb {
+  background: #455a79;
+  border-radius: 5px;
+}
+
+/* Petit écran */
+@media (max-width: 850px) {
+  #workspace {
+    flex-direction: column;
+  }
+
+  #scene-container {
+    flex: 1 1 55%;
+    min-height: 250px;
+  }
+
+  #controls-panel {
+    flex: 0 0 45%;
+    width: 100%;
+    height: 45%;
+    border-left: none;
+    border-top: 1px solid #34445f;
+  }
+}
